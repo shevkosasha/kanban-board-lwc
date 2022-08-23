@@ -1,0 +1,22 @@
+<template>
+    <template if:true={isSameStage}>
+        <li class="slds-item slds-var-m-around_small" draggable="true" ondragstart={itemDragStartHandler}>
+            <div class="slds-tile slds-tile_board board-item">
+                <lightning-card>
+                    <h3 slot="title" class="slds-truncate slds-text-heading_small" title={record.Name}>
+                        <a href="#" data-id={record.Id} onclick={openOpportunityHandler}>
+                            <span class="" data-id={record.Id}> {record.Name} </span>
+                        </a>
+                    </h3>
+                    <p class="slds-text-heading_small">Amount: ${record.Amount}</p>
+                    <p class="" title={record.CloseDate}>Closing date: {record.CloseDate}</p>
+                    <p slot="footer" class="" title={record.AccountName}>
+                        <a href="#" data-id={record.AccountId} onclick={openAccountHandler}>
+                            <span class="" data-id={record.AccountId}> {record.AccountName} </span>
+                        </a>
+                    </p>
+                </lightning-card>
+            </div>
+        </li>
+     </template>
+</template>

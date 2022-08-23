@@ -1,0 +1,17 @@
+<template>    
+    <ul class="slds-has-dividers_around-space dropZone opportunity_list"  ondrop={dropHandler} ondragover={dragOverHandler} >
+        <template  if:true={isProcessing}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+        <template  if:false={isProcessing}>
+            <template for:each={records} for:item="item">
+                <c-opportunity-card 
+                    stage={stage} 
+                    record={item} 
+                    key={item.Id} 
+                    onitemdragstart={itemDragHandler}>
+                </c-opportunity-card>
+            </template>
+        </template>        
+    </ul>         
+</template>

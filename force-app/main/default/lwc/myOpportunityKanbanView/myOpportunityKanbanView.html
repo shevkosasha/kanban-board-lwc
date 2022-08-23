@@ -1,0 +1,29 @@
+<template>
+    <lightning-card class="">
+        <div class="slds-gutters slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+            <lightning-layout > 
+                <template  if:false={records}>
+                    <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                </template> 
+                <template if:true={hasPicklistValues}>
+                    <template for:each={picklistValues.data.values} for:item="entry" >
+                        <lightning-layout-item flexibility="auto" padding="around-small" key={entry.value} style={width}>                             
+                            <c-stage-component stage={entry.value}></c-stage-component> 
+                            <c-total-price-by-stage-component 
+                                stage={entry.value} 
+                                amounts-by-stage={totalAmountsByStage} >
+                            </c-total-price-by-stage-component>
+                            <c-opportunity-list 
+                                isprocessing={isProcessing}
+                                records={records} 
+                                stage={entry.value}
+                                onitemdrag={handleItemDrag}
+                                onitemdrop={handleItemDrop}>
+                            </c-opportunity-list>                            
+                        </lightning-layout-item>
+                    </template>
+                </template>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

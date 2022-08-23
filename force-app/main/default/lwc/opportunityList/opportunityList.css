@@ -1,0 +1,7 @@
+.opportunity_list{
+    height: 100%;
+}
+.opportunity_list,
+.opportunity_list * {
+    overflow-wrap: break-word;
+}
